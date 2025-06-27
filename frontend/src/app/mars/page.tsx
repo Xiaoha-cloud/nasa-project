@@ -7,54 +7,39 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Image from "next/image"
-
-interface MarsPhoto {
-  id: number
-  img_src: string
-  earth_date: string
-  camera: {
-    name: string
-    full_name: string
-  }
-  rover: {
-    name: string
-  }
-}
+import { apiService, MarsPhoto } from "@/lib/api"
 
 const rovers = [
   { value: "curiosity", label: "Curiosity" },
   { value: "opportunity", label: "Opportunity" },
   { value: "spirit", label: "Spirit" },
+  { value: "perseverance", label: "Perseverance" },
 ]
 
 export default function MarsPage() {
   const [photos, setPhotos] = useState<MarsPhoto[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [selectedRover, setSelectedRover] = useState("curiosity")
   const [selectedDate, setSelectedDate] = useState("2023-01-01")
 
-  // Mock Mars photos data
-  const mockPhotos: MarsPhoto[] = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    img_src: `/placeholder.svg?height=300&width=400`,
-    earth_date: selectedDate,
-    camera: {
-      name: "NAVCAM",
-      full_name: "Navigation Camera",
-    },
-    rover: {
-      name: selectedRover.charAt(0).toUpperCase() + selectedRover.slice(1),
-    },
-  }))
-
   useEffect(() => {
-    setLoading(true)
-    const timer = setTimeout(() => {
-      setPhotos(mockPhotos)
-      setLoading(false)
-    }, 1000)
+    const fetchMarsPhotos = async () => {
+      setLoading(true)
+      setError(null)
+      try {
+        const data = await apiService.getMarsPhotos(selectedRover, selectedDate)
+        setPhotos(data.photos || [])
+      } catch (err) {
+        console.error('Error fetching Mars photos:', err)
+        setError(err instanceof Error ? err.message : 'Failed to fetch Mars photos')
+        setPhotos([])
+      } finally {
+        setLoading(false)
+      }
+    }
 
-    return () => clearTimeout(timer)
+    fetchMarsPhotos()
   }, [selectedRover, selectedDate])
 
   return (
@@ -109,6 +94,14 @@ export default function MarsPage() {
         </CardContent>
       </Card>
 
+      {/* Error Display */}
+      {error && (
+        <div className="text-center py-8">
+          <p className="text-red-400 mb-4">Error: {error}</p>
+          <p className="text-white/60 text-sm">Try selecting a different date or rover</p>
+        </div>
+      )}
+
       {/* Photos Grid */}
       {loading ? (
         <div className="flex justify-center items-center py-16">
@@ -125,10 +118,11 @@ export default function MarsPage() {
               <CardContent className="p-0">
                 <div className="relative aspect-square overflow-hidden rounded-t-lg">
                   <Image
-                    src={photo.img_src || "/placeholder.svg"}
+                    src={photo.img_src}
                     alt={`Mars photo by ${photo.rover.name}`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    unoptimized
                   />
                 </div>
                 <div className="p-4 space-y-2">
@@ -136,6 +130,7 @@ export default function MarsPage() {
                     <div>
                       <p className="text-white font-medium">{photo.camera.full_name}</p>
                       <p className="text-white/60 text-sm">{photo.rover.name} Rover</p>
+                      <p className="text-white/40 text-xs">Status: {photo.rover.status}</p>
                     </div>
                     <p className="text-blue-400 text-sm">{photo.earth_date}</p>
                   </div>
@@ -146,9 +141,10 @@ export default function MarsPage() {
         </div>
       )}
 
-      {!loading && photos.length === 0 && (
+      {!loading && !error && photos.length === 0 && (
         <div className="text-center py-16">
           <p className="text-white/60">No photos available for the selected date and rover</p>
+          <p className="text-white/40 text-sm mt-2">Try selecting a different date or rover</p>
         </div>
       )}
     </div>
