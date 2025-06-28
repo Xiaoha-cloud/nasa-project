@@ -58,9 +58,21 @@ class NeoController {
       const result = await nasaApiService.getNeoFeed(start_date, end_date);
       
       if (result.success) {
+        // Flatten the NEO data from date-grouped object to array
+        const flattenedNeos = [];
+        const neoData = result.data.near_earth_objects || {};
+        
+        // Iterate through each date and add NEOs to the flattened array
+        Object.keys(neoData).forEach(date => {
+          const neosForDate = neoData[date] || [];
+          neosForDate.forEach(neo => {
+            flattenedNeos.push(neo);
+          });
+        });
+
         res.json({
           success: true,
-          data: result.data,
+          data: flattenedNeos,
           message: result.message,
           query: { start_date, end_date, days_range: daysDiff },
           timestamp: new Date().toISOString()

@@ -1,14 +1,14 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Calendar, Loader2, TrendingUp } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts"
 import { apiService, NEOData } from "@/lib/api"
+import { Calendar, Loader2, TrendingUp } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 interface ChartData {
   name: string
@@ -29,12 +29,8 @@ export default function NEOPage() {
       setError(null)
       try {
         const data = await apiService.getNEOs(startDate, endDate)
-        // Flatten the data from date-based structure to array
-        const allNEOs: NEOData[] = []
-        Object.values(data).forEach(neos => {
-          allNEOs.push(...neos)
-        })
-        setNeoData(allNEOs)
+        // Backend now returns a flat array directly
+        setNeoData(data)
       } catch (err) {
         console.error('Error fetching NEO data:', err)
         setError(err instanceof Error ? err.message : 'Failed to fetch NEO data')

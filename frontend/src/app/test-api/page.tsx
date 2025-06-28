@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { apiService, APODData, MarsPhoto, NEOData } from "@/lib/api"
+import { useEffect, useState } from "react"
 
 export default function TestAPIPage() {
   const [apodData, setApodData] = useState<APODData | null>(null)
   const [marsData, setMarsData] = useState<{ photos: MarsPhoto[] } | null>(null)
-  const [neoData, setNeoData] = useState<Record<string, NEOData[]> | null>(null)
+  const [neoData, setNeoData] = useState<NEOData[] | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -96,9 +96,9 @@ export default function TestAPIPage() {
           <h2 className="text-2xl font-bold text-white mb-4">NEO API Test</h2>
           {neoData ? (
             <div className="text-white space-y-2">
-              <p><strong>Date Keys:</strong> {Object.keys(neoData).join(', ')}</p>
-              <p><strong>Total NEOs:</strong> {Object.values(neoData).flat().length}</p>
-              <p><strong>First NEO:</strong> {Object.values(neoData).flat()[0]?.name || 'N/A'}</p>
+              <p><strong>Total NEOs:</strong> {neoData.length}</p>
+              <p><strong>First NEO:</strong> {neoData[0]?.name || 'N/A'}</p>
+              <p><strong>Hazardous NEOs:</strong> {neoData.filter(neo => neo.is_potentially_hazardous_asteroid).length}</p>
               <p className="text-green-400">✅ NEO API working correctly!</p>
             </div>
           ) : (

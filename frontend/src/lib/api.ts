@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001/api';
 
 export interface APODData {
     title: string;
@@ -109,8 +109,8 @@ class ApiService {
     }
 
     // NEO API
-    async getNEOs(start_date: string, end_date: string): Promise<Record<string, NEOData[]>> {
-        return this.fetchApi<Record<string, NEOData[]>>('/neo', {
+    async getNEOs(start_date: string, end_date: string): Promise<NEOData[]> {
+        return this.fetchApi<NEOData[]>('/neo', {
             start_date,
             end_date
         });

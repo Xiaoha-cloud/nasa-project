@@ -14,6 +14,7 @@ const corsOptions = {
     const allowedOrigins = [
       'http://localhost:3000',           // Next.js frontend (development)
       'http://localhost:3001',           // Alternative frontend port
+      'http://localhost:3002',           // Next.js frontend (alternative port)
       'https://your-frontend-domain.com', // Production frontend (update this)
       process.env.CORS_ORIGIN            // From environment variable
     ].filter(Boolean); // Remove undefined values
