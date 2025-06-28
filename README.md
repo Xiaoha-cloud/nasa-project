@@ -2,6 +2,54 @@
 
 A comprehensive web application that leverages NASA's Open APIs to showcase space-related data through an interactive and visually appealing interface. Built with React frontend and Node.js backend, this application allows users to explore and interact with NASA's vast array of space data in a creative and engaging way.
 
+## 🚀 Live Demo
+
+**Backend API**: https://nasa-project-vy99.onrender.com/api
+
+## 📸 Application Preview
+
+<div align="center">
+  <img src="docs/screenshots/homepage-dashboard.png" alt="Homepage Dashboard" width="800"/>
+  <p><em>Main application dashboard with featured space content</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/apod-page.png" alt="APOD Page" width="800"/>
+  <p><em>Astronomy Picture of the Day with detailed explanations</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/mars-rover-page.png" alt="Mars Rover Page" width="800"/>
+  <p><em>Mars rover photos with camera selection and filtering</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/neo-dashboard.png" alt="NEO Dashboard Top" width="800"/>
+  <p><em>Near Earth Objects dashboard - Top section</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/neo-dashboard-bottom.png" alt="NEO Dashboard Bottom" width="800"/>
+  <p><em>Near Earth Objects dashboard - Bottom section with data table</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/search-page.png" alt="Search Page" width="800"/>
+  <p><em>Advanced search functionality through NASA's media library</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/responsive-mobile.png" alt="Mobile Responsive" width="400"/>
+  <p><em>Mobile-optimized responsive design</em></p>
+</div>
+
+<div align="center">
+  <img src="docs/screenshots/data-visualization.png" alt="Data Visualization" width="800"/>
+  <p><em>Interactive charts and data visualization for NEO analysis</em></p>
+</div>
+
+> **Note**: These screenshots demonstrate the application's functionality and design. Due to NASA API token expiration (24 hours), live data may not be available, but these visuals show the complete user experience.
+
 ## Important Note: NASA API Token Management
 
 **NASA API tokens have a 24-hour expiration period.** This is a critical consideration for both development and production environments:
@@ -28,6 +76,28 @@ A comprehensive web application that leverages NASA's Open APIs to showcase spac
 - **Error Handling**: Implement graceful degradation for expired tokens
 - **Monitoring**: Set up alerts for authentication failures
 - **Documentation**: Keep track of key expiration dates
+
+### Screenshots for Demonstration
+Due to the 24-hour token expiration, we maintain a collection of screenshots in the `docs/screenshots/` folder to demonstrate the application's functionality when live data is unavailable.
+
+**Screenshot Folder Location**: `docs/screenshots/`
+
+**Key Screenshots Available**:
+- `homepage-dashboard.png` - Main application dashboard
+- `apod-page.png` - Astronomy Picture of the Day interface
+- `mars-rover-page.png` - Mars Rover photos gallery
+- `neo-dashboard.png` - Near Earth Objects data visualization
+- `search-page.png` - Advanced search functionality
+- `responsive-mobile.png` - Mobile responsive design
+- `data-visualization.png` - Interactive charts and graphs
+
+**To Add Your Screenshots**:
+1. Navigate to the `docs/screenshots/` folder in the project
+2. Save your screenshots with descriptive names following the convention in `docs/screenshots/README.md`
+3. Update this README to reference your new screenshots
+4. Commit the changes to maintain a visual backup of the application
+
+This ensures that even when NASA API tokens expire, you can still demonstrate the full functionality and design of the application through these visual references.
 
 ## Project Evaluation Criteria
 
@@ -255,9 +325,11 @@ nasa-project/
 - Optimized for Next.js performance
 
 ### Backend (Render)
+- **Live URL**: https://nasa-project-vy99.onrender.com
 - Node.js web service deployment
 - Automatic scaling and health checks
 - Environment variables for API keys
+- Free tier with sleep mode (may take a few seconds to wake up)
 
 ### Environment Variables
 ```env
@@ -267,8 +339,21 @@ NODE_ENV=production
 PORT=10000
 
 # Frontend
-NEXT_PUBLIC_API_BASE_URL=https://your-backend-url.onrender.com/api
+NEXT_PUBLIC_API_BASE_URL=https://nasa-project-vy99.onrender.com/api
 ```
+
+## Live Demo
+
+**Backend API**: https://nasa-project-vy99.onrender.com/api
+
+**API Endpoints**:
+- Health Check: https://nasa-project-vy99.onrender.com/api/health
+- APOD: https://nasa-project-vy99.onrender.com/api/apod
+- Mars Rover: https://nasa-project-vy99.onrender.com/api/mars
+- NEO Data: https://nasa-project-vy99.onrender.com/api/neo
+- Search: https://nasa-project-vy99.onrender.com/api/search
+
+> **Note**: The backend is deployed on Render and may take a few seconds to wake up from sleep mode on the first request.
 
 ## Development Workflow
 
