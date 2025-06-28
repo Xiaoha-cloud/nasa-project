@@ -1,12 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { apiService } from "@/lib/api"
+import { apiService, APODData, MarsPhoto, NEOData } from "@/lib/api"
 
 export default function TestAPIPage() {
-  const [apodData, setApodData] = useState<any>(null)
-  const [marsData, setMarsData] = useState<any>(null)
-  const [neoData, setNeoData] = useState<any>(null)
+  const [apodData, setApodData] = useState<APODData | null>(null)
+  const [marsData, setMarsData] = useState<{ photos: MarsPhoto[] } | null>(null)
+  const [neoData, setNeoData] = useState<Record<string, NEOData[]> | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -98,7 +98,7 @@ export default function TestAPIPage() {
             <div className="text-white space-y-2">
               <p><strong>Date Keys:</strong> {Object.keys(neoData).join(', ')}</p>
               <p><strong>Total NEOs:</strong> {Object.values(neoData).flat().length}</p>
-              <p><strong>First NEO:</strong> {(Object.values(neoData).flat() as any[])[0]?.name || 'N/A'}</p>
+              <p><strong>First NEO:</strong> {Object.values(neoData).flat()[0]?.name || 'N/A'}</p>
               <p className="text-green-400">✅ NEO API working correctly!</p>
             </div>
           ) : (

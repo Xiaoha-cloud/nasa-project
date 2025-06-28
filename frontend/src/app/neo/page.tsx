@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { AlertTriangle, Calendar, Loader2, TrendingUp } from "lucide-react"
+import { Calendar, Loader2, TrendingUp } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -46,10 +46,6 @@ export default function NEOPage() {
 
     fetchNEOs()
   }, [startDate, endDate])
-
-  const formatNumber = (num: string) => {
-    return Number.parseInt(num).toLocaleString()
-  }
 
   const formatDistance = (distance: string) => {
     const km = parseFloat(distance)
