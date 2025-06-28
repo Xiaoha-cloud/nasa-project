@@ -1,7 +1,54 @@
 {
+  "name": "nasa-project",
+  "version": "1.0.0",
+  "description": "NASA Explorer - A comprehensive space data exploration application",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "lint": "npm run lint:backend && npm run lint:frontend",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:fix": "npm run lint:fix:backend && npm run lint:fix:frontend",
+    "lint:fix:backend": "cd backend && npm run lint:fix",
+    "lint:fix:frontend": "cd frontend && npm run lint:fix",
+    "type-check": "cd frontend && npx tsc --noEmit",
+    "check-all": "npm run lint && npm run type-check"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.11"
-  }
+    "tailwindcss": "^4.1.11",
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "frontend/**/*.{ts,tsx}": [
+      "cd frontend && npm run lint:fix",
+      "cd frontend && npx tsc --noEmit"
+    ],
+    "backend/**/*.{js,jsx}": [
+      "cd backend && npm run lint:fix"
+    ]
+  },
+  "keywords": [
+    "nasa",
+    "space",
+    "astronomy",
+    "react",
+    "nextjs",
+    "express",
+    "api"
+  ],
+  "author": "NASA Project Team",
+  "license": "MIT"
 }
