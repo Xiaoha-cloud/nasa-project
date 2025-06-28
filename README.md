@@ -91,14 +91,6 @@ Due to the 24-hour token expiration, we maintain a collection of screenshots in 
 - `responsive-mobile.png` - Mobile responsive design
 - `data-visualization.png` - Interactive charts and graphs
 
-**To Add Your Screenshots**:
-1. Navigate to the `docs/screenshots/` folder in the project
-2. Save your screenshots with descriptive names following the convention in `docs/screenshots/README.md`
-3. Update this README to reference your new screenshots
-4. Commit the changes to maintain a visual backup of the application
-
-This ensures that even when NASA API tokens expire, you can still demonstrate the full functionality and design of the application through these visual references.
-
 ## Project Evaluation Criteria
 
 This project has been developed to meet comprehensive evaluation standards across multiple dimensions:
