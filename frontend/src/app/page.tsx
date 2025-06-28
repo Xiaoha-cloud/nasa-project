@@ -5,14 +5,14 @@ import Link from "next/link"
 const features = [
   {
     title: "Astronomy Picture of the Day",
-    description: "Discover the cosmos with NASA's daily featured image and explanation",
+    description: "Discover the cosmos with NASA&apos;s daily featured image and explanation",
     icon: Telescope,
     href: "/apod",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     title: "Mars Rover Photos",
-    description: "Explore the Red Planet through the eyes of NASA's Mars rovers",
+    description: "Explore the Red Planet through the eyes of NASA&apos;s Mars rovers",
     icon: Camera,
     href: "/mars",
     gradient: "from-red-500 to-orange-500",
@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-bold text-white">NASA Explorer</h1>
           <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-            Discover the wonders of space through NASA's incredible data and imagery. Explore planets, track asteroids,
+            Discover the wonders of space through NASA&apos;s incredible data and imagery. Explore planets, track asteroids,
             and journey through the cosmos.
           </p>
         </div>
