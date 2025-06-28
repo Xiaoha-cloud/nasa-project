@@ -38,7 +38,7 @@ const mockMediaData: MediaItem[] = [
     nasa_id: "PIA12346",
     title: "Mars Perseverance Rover Landing",
     description:
-      "Historic footage of NASA's Perseverance rover landing on Mars, marking a new era in Mars exploration and the search for ancient microbial life.",
+      "Historic footage of NASA&apos;s Perseverance rover landing on Mars, marking a new era in Mars exploration and the search for ancient microbial life.",
     media_type: "video",
     date_created: "2023-09-20",
     keywords: ["Mars", "Perseverance", "Landing", "Rover"],
@@ -68,7 +68,7 @@ const mockMediaData: MediaItem[] = [
     nasa_id: "PIA12349",
     title: "Artemis Moon Mission Preparation",
     description:
-      "Behind-the-scenes footage of NASA's Artemis program preparations, showcasing the next generation of lunar exploration technology.",
+      "Behind-the-scenes footage of NASA&apos;s Artemis program preparations, showcasing the next generation of lunar exploration technology.",
     media_type: "video",
     date_created: "2023-07-25",
     keywords: ["Artemis", "Moon", "Lunar", "Mission"],
@@ -78,7 +78,7 @@ const mockMediaData: MediaItem[] = [
     nasa_id: "PIA12350",
     title: "Solar Flare Activity",
     description:
-      "Spectacular solar flare captured by NASA's Solar Dynamics Observatory, showing the Sun's dynamic and powerful magnetic field interactions.",
+      "Spectacular solar flare captured by NASA&apos;s Solar Dynamics Observatory, showing the Sun&apos;s dynamic and powerful magnetic field interactions.",
     media_type: "image",
     date_created: "2023-06-12",
     keywords: ["Sun", "Solar Flare", "SDO", "Magnetic Field"],
@@ -117,7 +117,7 @@ export default function SearchPage() {
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-white">NASA Media Search</h1>
         <p className="text-xl text-white/80 max-w-2xl mx-auto">
-          Search through NASA's vast collection of images and videos
+          Search through NASA&apos;s vast collection of images and videos
         </p>
       </div>
 
@@ -214,7 +214,7 @@ export default function SearchPage() {
             </div>
           ) : (
             <div className="text-center py-16">
-              <p className="text-white/60">No results found for "{searchQuery}"</p>
+              <p className="text-white/60">No results found for &quot;{searchQuery}&quot;</p>
               <p className="text-white/40 text-sm mt-2">Try different keywords or check your spelling</p>
             </div>
           )}
@@ -222,7 +222,7 @@ export default function SearchPage() {
       ) : (
         <div className="text-center py-16">
           <Search className="w-16 h-16 text-white/40 mx-auto mb-4" />
-          <p className="text-white/60">Enter a search term to explore NASA's media collection</p>
+          <p className="text-white/60">Enter a search term to explore NASA&apos;s media collection</p>
         </div>
       )}
     </div>

@@ -44,7 +44,7 @@ export default function APODPage() {
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-white">Astronomy Picture of the Day</h1>
         <p className="text-xl text-white/80 max-w-2xl mx-auto">
-          Discover the cosmos with NASA's featured image and detailed explanation
+          Discover the cosmos with NASA&apos;s featured image and detailed explanation
         </p>
       </div>
 
