@@ -3,7 +3,7 @@
 A comprehensive web application that leverages NASA's Open APIs to showcase space-related data through an interactive and visually appealing interface. Built with React frontend and Node.js backend, this application allows users to explore and interact with NASA's vast array of space data in a creative and engaging way.
 
 ## 🚀 Live Demo
-
+**Frontend Demo**: https://nasa-project-75ovjnmyz-blairjade183s-projects.vercel.app/
 **Backend API**: https://nasa-project-vy99.onrender.com/api
 
 ## 📸 Application Preview
